@@ -4,9 +4,12 @@ __pycache__/
 *$py.class
 *.pbz2
 
+# Data
+*.DS_Store
+project-I/data/*
+
 # C extensions
 *.so
-*.DS_Store
 
 # Distribution / packaging
 .Python
