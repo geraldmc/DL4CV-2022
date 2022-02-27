@@ -1,12 +1,25 @@
-import torch
+#import os
+#import torch
+#import torchvision
+#from torch.utils.data import Dataset
+#import torchvision.transforms as transforms
+#import torch.nn as nn
+#import torch.nn.functional as F
+#import torch.optim as optim 
+#import numpy as np
+#import pandas as pd
+
 import os
+import torch
 import pandas as pd
-from torch.utils.data import Dataset
-#from torchvision.io import read_image
-import torchvision.transforms as transforms
+from skimage import io, transform
 import numpy as np
+import matplotlib.pyplot as plt
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms, utils
 from PIL import Image
 
+# See: https://debuggercafe.com/custom-dataset-and-dataloader-in-pytorch/
 
 class GTSRB(Dataset):
 
@@ -18,6 +31,7 @@ class GTSRB(Dataset):
             self.sub_directory = 'Training'
             self.csv_file_name = 'GT_Training.csv'
         self.transform = transform
+        self.frame = None
 
         csv_file_path = os.path.join(self.root_dir, 
                                      self.sub_directory, 
@@ -32,13 +46,15 @@ class GTSRB(Dataset):
         img_path = os.path.join(self.root_dir, 
                                 self.sub_directory,
                                 self.csv_data.iloc[idx, 0])
+        img_frame_coords = (    self.csv_data.iloc[idx, 3:7]) # Roi.X1, Roi.Y1, Roi.X2, Roi.Y2
+        
         img = Image.open(img_path)
         tensor_img = torch.from_numpy(np.array(img)) # see https://github.com/pytorch/vision/issues/2989
         #img = read_image(img_path)
 
-        classId = self.csv_data.iloc[idx, 7]
+        class_id = self.csv_data.iloc[idx, 7]
 
         if self.transform is not None:
             img = self.transform(img)
 
-        return img, classId
+        return img, class_id, img_frame_coords

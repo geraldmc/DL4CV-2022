@@ -1,4 +1,7 @@
-#### Commands to interact with AWS instance
+#### Design inspired by https://github.com/abursuc/dldiy-gtsrb
+
+
+#### Commands to interact with AWS instance:
 
 ssh -i "gtsrb.pem" ubuntu@ec2-18-119-140-152.us-east-2.compute.amazonaws.com
 

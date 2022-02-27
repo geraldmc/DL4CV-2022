@@ -12,7 +12,7 @@ import _pickle as cPickle
 from collections import defaultdict, namedtuple
 
 # Compress and pickle a file 
-def compressed_pickle(title, data):
+def compress_pickle(title, data):
   with bz2.BZ2File(title + '.pbz2', 'w') as f: cPickle.dump(data, f)
 
 # Load a compressed pickle file

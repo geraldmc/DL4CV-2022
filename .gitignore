@@ -7,7 +7,7 @@ __pycache__/
 # Data
 *.DS_Store
 project-I/data/*
-
+gtsrb.pem
 # C extensions
 *.so
 
