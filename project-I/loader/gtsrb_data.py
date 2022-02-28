@@ -28,7 +28,7 @@ class GTSRB(Dataset):
         """
         self.root_dir = root_dir
         if train:
-            self.sub_directory = 'Training'
+            self.sub_directory = 'training'
             self.csv_file_name = 'GT_Training.csv'
         self.transform = transform
         self.frame = None
