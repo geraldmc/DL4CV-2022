@@ -12,8 +12,8 @@ import _pickle as cPickle
 from collections import defaultdict, namedtuple
 
 # Compress and pickle a file 
-def compress_pickle(title, data):
-  with bz2.BZ2File(title + '.pbz2', 'w') as f: cPickle.dump(data, f)
+def compress_pickle(filename, data):
+  with bz2.BZ2File(filename + '.pbz2', 'w') as f: cPickle.dump(data, f)
 
 # Load a compressed pickle file
 def decompress_pickle(file):
@@ -73,7 +73,7 @@ def renameImageFiles(path):
     This allows placing all files and a single csv annotations file under one directory!
     
     NOTE: This executes from whereever the utilities.py file is, all paths are relative. 
-    FIXME: This function is idempotent. Check to see if it's already been done. 
+    FIXME: This function is should only run once. Check to see if it's already been done. 
     '''
     import os
     import csv
