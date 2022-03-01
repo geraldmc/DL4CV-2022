@@ -4,12 +4,13 @@ import os
 import csv
 import glob
 import shutil
-#import matplotlib.pyplot as plt
 import pandas as pd
 
 import bz2
 import _pickle as cPickle
 from collections import defaultdict, namedtuple
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 # Compress and pickle a file 
 def compress_pickle(filename, data):
@@ -97,7 +98,6 @@ def renameImageFiles(path):
             shutil.copy(item, dest_dir+txt+item)
         os.chdir(rel_root_dir)
         
-
 def combine_CSV(path):
     
     import os
@@ -130,6 +130,15 @@ def combine_CSV(path):
     # export to project root.
     combined_csv.to_csv( "GT_Training.csv", index=False, encoding='utf-8-sig')
     
+def show_framed_img(img, img_frame):
+    fig, ax = plt.subplots(1)
+    ax.imshow(img)
+    rect = patches.Rectangle((img_frame[0][1],img_frame[1][1]),
+                             img_frame[2][1]-img_frame[0][1],
+                             img_frame[3][1]-img_frame[1][1],
+                             linewidth=1, edgecolor='#00ff00',facecolor='none')
+    ax.add_patch(rect)
+    plt.show()
     
     
 '''
