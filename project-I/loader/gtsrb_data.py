@@ -38,6 +38,11 @@ class GTSRB(Dataset):
                                      self.csv_file_name)
         
         self.csv_data = pd.read_csv(csv_file_path, sep=';')
+        
+        #self.transform = transforms.Compose([transforms.Resize([256, 256]),
+        #                                     #transforms.RandomCrop(224),
+        #                                     #transforms.RandomHorizontalFlip(),
+        #                                     transforms.ToTensor()])
 
     def __len__(self):
         return len(self.csv_data)

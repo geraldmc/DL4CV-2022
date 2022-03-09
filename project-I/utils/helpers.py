@@ -1,5 +1,3 @@
-# Project1_utilities -----------------------------
-
 import os
 import csv
 import glob
@@ -11,6 +9,7 @@ import _pickle as cPickle
 from collections import defaultdict, namedtuple
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+
 
 # Compress and pickle a file 
 def compress_pickle(filename, data):
@@ -104,6 +103,7 @@ def combine_CSV(path):
     import csv
     import glob
     import shutil
+    import pandas as pd
     
     cwd = os.getcwd()
     
@@ -119,7 +119,8 @@ def combine_CSV(path):
     
     for idx in range(len(subdirectories)):
         all_csv_filenames.append('GT-'+subdirectories[idx]+'.csv')
-    for idx in range(len(subdirectories)):    
+    for idx in range(len(subdirectories)): 
+        #print(os.getwd())
         os.chdir('data/GTSRB/Final_Training/Images/'+subdirectories[idx])
         shutil.copy(all_csv_filenames[idx], dest_dir)
         os.chdir(cwd)
@@ -130,9 +131,12 @@ def combine_CSV(path):
     # export to project root.
     combined_csv.to_csv( "GT_Training.csv", index=False, encoding='utf-8-sig')
     
-def show_framed_img(img, img_frame):
+def show_framed_img(img, img_frame, tensor=False):
     fig, ax = plt.subplots(1)
-    ax.imshow(img)
+    if tensor:
+        ax.imshow(img.permute(1, 2, 0))
+    else:
+        ax.imshow(img)
     rect = patches.Rectangle((img_frame[0][1],img_frame[1][1]),
                              img_frame[2][1]-img_frame[0][1],
                              img_frame[3][1]-img_frame[1][1],
@@ -146,4 +150,23 @@ for idx in range(len(subdirectories)):
     os.chdir(subdirectories[idx])
     subdir_list.append(os.getcwd()[-5:])
     os.chdir('..')
+    
+
+
+import os
+import glob
+import csv
+import pandas as pd
+
+all_csv = []
+root = '/Users/geraldmc/Desktop/Hopkins/Spring-2022/DL4CV-2022/project-I/'
+annotation_dir = "data/GTSRB/Final_Training/Annotations/"
+os.chdir(root+annotation_dir)
+for file in glob.glob("*.csv"):
+    all_csv.append(file)
+
+combined_csv = pd.concat([pd.read_csv(f, sep=';') for f in sorted(all_csv) ])
+combined_csv
+
+
 '''
