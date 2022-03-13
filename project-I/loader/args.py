@@ -39,7 +39,7 @@ def get_args(local=False):
                         help='learning rate (default: 0.0001)')
     parser.add_argument('--seed', type=int, default=1,
                         help='random seed (default: 1)')
-    parser.add_argument('--log-interval', type=int, default=100,
+    parser.add_argument('--log-interval', type=int, default=200,
                         help='how many batches to wait before logging training status')
     parser.add_argument('--save_every', type=int, default=1000,
                        help='save frequency')
