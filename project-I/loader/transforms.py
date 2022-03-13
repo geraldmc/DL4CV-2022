@@ -2,7 +2,7 @@ import os
 
 import torchvision.transforms as transforms
 
-data_transforms = transforms.Compose([
+base_transform = transforms.Compose([
     transforms.Resize((32, 32)),
     transforms.ToTensor(),
     transforms.Normalize((0.3337, 0.3064, 0.3171), ( 0.2672, 0.2564, 0.2629))
