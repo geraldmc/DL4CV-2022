@@ -1,7 +1,15 @@
 import torch
 
 def calc_accuracy(output, target, topk=(1,)):
-    """Computes the precision@k for the specified values of k"""
+    '''Computes the precision@k for the specified values of k
+        ref:
+    - https://pytorch.org/docs/stable/generated/torch.topk.html
+    - https://discuss.pytorch.org/t/imagenet-example-accuracy-calculation/7840
+    - https://gist.github.com/weiaicunzai/2a5ae6eac6712c70bde0630f3e76b77b
+    - https://discuss.pytorch.org/t/top-k-error-calculation/48815/2
+    - https://stackoverflow.com/questions/59474987/how-to-get-top-k-accuracy-in-semantic-segmentation-using-pytorch
+
+    '''
     with torch.no_grad():
         maxk = max(topk)
         batch_size = target.size(0)
@@ -17,7 +25,7 @@ def calc_accuracy(output, target, topk=(1,)):
         return res
 
 class AvgMeter(object):
-    """Computes and stores the average and current value"""
+    '''Compute and store the average and current value'''
     def __init__(self):
         self.reset()
 
