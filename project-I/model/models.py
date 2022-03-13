@@ -11,9 +11,9 @@ nclasses = 43 # GTSRB as 43 classes
 
 # See: https://pytorch.org/tutorials/intermediate/spatial_transformer_tutorial.html
 
-class Net(nn.Module):
+class Net1(nn.Module):
     def __init__(self):
-        super(Net, self).__init__()
+        super(Net1, self).__init__()
         
         # CNN layers
         self.conv1 = nn.Conv2d(3, 100, kernel_size=5)
