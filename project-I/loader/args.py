@@ -20,7 +20,7 @@ def get_args(local=False):
     else:
         parser.add_argument('--data_dir_train', type=str, default='/content/Final_Training/Images',
                            help='data directory containing training image class folders')
-        parser.add_argument('--data_dir_test', type=str, default='data/Final_Test',
+        parser.add_argument('--data_dir_test', type=str, default='/content/Final_Test',
                            help='data directory containing test images')
         parser.add_argument('--annotations_file', type=str, default='/content/Final_Training/Annotations',
                            help='data directory containing class annotations file')
@@ -33,7 +33,7 @@ def get_args(local=False):
     
     parser.add_argument('--batch_size', type=int, default=50,
                        help='input batch size for training')
-    parser.add_argument('--num_epochs', type=int, default=8,
+    parser.add_argument('--num_epochs', type=int, default=5,
                        help='number of epochs to train')
     parser.add_argument('--learning_rate', type=float, default=0.0001,
                         help='learning rate (default: 0.0001)')
