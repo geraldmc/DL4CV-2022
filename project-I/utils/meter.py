@@ -7,7 +7,6 @@ def calc_accuracy(output, target, topk=(1,)):
     - https://discuss.pytorch.org/t/imagenet-example-accuracy-calculation/7840
     - https://gist.github.com/weiaicunzai/2a5ae6eac6712c70bde0630f3e76b77b
     - https://discuss.pytorch.org/t/top-k-error-calculation/48815/2
-    - https://stackoverflow.com/questions/59474987/how-to-get-top-k-accuracy-in-semantic-segmentation-using-pytorch
 
     '''
     with torch.no_grad():
