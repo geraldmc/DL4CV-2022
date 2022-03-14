@@ -26,6 +26,8 @@ class Net1(nn.Module):
         self.fc1 = nn.Linear(250*2*2, 350)
         self.fc2 = nn.Linear(350, nclasses)
 
+        # https://brsoff.github.io/tutorials/intermediate/spatial_transformer_tutorial.html
+        
         self.localization = nn.Sequential(
             nn.Conv2d(3, 8, kernel_size=7),
             nn.MaxPool2d(2, stride=2),
@@ -73,16 +75,3 @@ class Net1(nn.Module):
         x = F.dropout(x, training=self.training)
         x = self.fc2(x)
         return F.log_softmax(x, dim=1)
-
-#    def forward(self, x):
-    # transform the input
-#    x = self.stn(x)
-
-        # Perform the usual forward pass
-#        x = F.relu(F.max_pool2d(self.conv1(x), 2))
-#        x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
-#        x = x.view(-1, 320)
-#        x = F.relu(self.fc1(x))
-#        x = F.dropout(x, training=self.training)
-#        x = self.fc2(x)
-#        return F.log_softmax(x, dim=1)
