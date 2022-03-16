@@ -23,17 +23,27 @@ https://sid.erda.dk/public/archives/daaeac0d7ce1152aea9b61d9f1e19370/published-a
 
 The file 'Final_Validation.zip' was created by using images 00000\*, 00001\* and 00002\* from each class. There are 23,220 files in the augmented validation set and 3,900 in the unaugmented set.   
 
+#### Features
+
+1. Spatial Transformer Networks: [STN](http://torch.ch/blog/2015/09/07/spatial_transformers.html)
+2. Adam Optimizer
+3. BatchNorm
+4. Dropout
+5. Data Augmentation and Transforms
+
+<h2>Methods used</h2>
+
+<ul>
+<li>CNN and Spatial transformer network: CNN with 3 layers, 2 fully connected layers and 1 spatial transformer network layer with two convolutional layers and one fully connected layer (CNN feature maps: 3 -> 100 -> 150 -> 250 -> 350, filter size: [5, 3 ,3], spatial transformer network feature maps: 3 -> 8 -> 10 -> 32, spatial transformer network filter size: [7,5])</li>
+
+<li>Data augmentation: Both training time and test time data augmentation proved to be beneficial. The manipulations applied were shearing, translating, image jittering in terms of brightness, hue, saturation and contrast, center cropping, rotating and horizontal and vertical flipping. These extent of these manipulations was applied after study of the training images - for instance, images were rotated only up to +/-15 degrees since that is the range of slant that some of the signs were found to be at. Similarly image brightness was manipulated liberally in both directions to both correct for the darkness that distorted some images and to create further examples of such badly distorted images for training. Test time augmentation involved the exact same manipulations as the train time augmentation. All images were normalized after manipulations. The final model had 392,090 images for training, about 10 times the original dataset size, through data augmentation.</li></ul>
+
+
 #### Training 
 
 
 #### Validation
 
-As the model trains, model checkpoints are saved to files such as `model_x.pth` to the current working directory.
-You can take one of the checkpoints and run:
-
-```
-python evaluate.py --data [data_dir] --model [model_file]
-```
 
 #### Commands to interact with AWS instance:
 
