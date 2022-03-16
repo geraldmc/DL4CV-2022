@@ -59,4 +59,4 @@ The file 'Final_Validation.zip' was created by using images 00000\*, 00001\* and
 Execute the Jupyter notebook `DL4CV-2022/project-I/main.ipynb`. It will run to completion using the `Run All` command in Colab.
 
 #### Issues
-If there are any questions please do not hesitate to contact me at gerald.mccollam@gmail.com
+If there are any questions please do not hesitate to text me at gerald.mccollam@gmail.com.
